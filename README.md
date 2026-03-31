@@ -4,8 +4,7 @@ A distributed vehicle telemetry ingestion pipeline built in Go, simulating
 the data infrastructure that powers real-time fleet observability.
 
 ## Architecture
-
-[paste the architecture diagram screenshot here]
+![Architecture](assets/architecture.png)
 
 ## What it does
 
