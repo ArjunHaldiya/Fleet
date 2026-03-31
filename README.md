@@ -20,7 +20,11 @@ the data infrastructure that powers real-time fleet observability.
 - Sub-5ms p99 ingest latency
 - Zero-downtime schema: TimescaleDB hypertable auto-partitions by time
 
-## Stack
+#Observability Dashboard
+![Active Vehciles and p99 Latency](assets/dashboard-active-vehicles.png)
+![Throughput and Rejection Rate](assets/dashboard-throughput.png)
+
+## Stack 
 
 Go · TimescaleDB · Redis · Prometheus · Grafana · Docker
 
@@ -30,27 +34,5 @@ git clone ...
 docker compose up -d
 go run .
 
-# Dashboard at http://localhost:3000 (admin/admin)
-# Metrics at http://localhost:8080/metrics
-```
-
-**2. Clean up your repo before pushing**
-
-Make sure these files are present:
-```
-fleetpulse/
-  main.go
-  simulator.go
-  server.go
-  storage.go
-  metrics.go
-  docker-compose.yml
-  prometheus.yml
-  alert.rules.yml
-  README.md
-```
-
-Add a `.gitignore`:
-```
-dead_letter.jsonl
-*.jsonl
+### Dashboard at http://localhost:3000 (admin/admin)
+### Metrics at http://localhost:8080/metrics
