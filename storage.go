@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"math"
 	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -52,4 +53,22 @@ func (s *Storage) save(event TelemetryEvent) error {
 	s.rdb.Set(ctx, key, data, 30*time.Second)
 
 	return nil
+}
+
+func (s *Storage) detectAnomaly(event TelemetryEvent) bool {
+	ctx := context.Background()
+	key := fmt.Sprintf("vehicle:%s:state", event.VehicleID)
+	val, err := s.rdb.Get(ctx, key).Result()
+
+	if err != nil {
+		return false
+	}
+	var last TelemetryEvent
+	if err := json.Unmarshal([]byte(val), &last); err != nil {
+		return false
+	}
+
+	delta := math.Abs(event.Speed - last.Speed)
+
+	return delta > 30
 }

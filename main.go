@@ -23,6 +23,11 @@ func main() {
 		for event := range ch {
 			fmt.Printf("[%s] speed=%.1f lat=%.4f\n",
 				event.VehicleID, event.Speed, event.Latitude)
+			if store.detectAnomaly(event) {
+				anomaliesDetected.Inc()
+				log.Printf("ANOMALY DETECTED: vehicle=%s speed %.1f",
+					event.VehicleID, event.Speed)
+			}
 			if err := store.save(event); err != nil {
 				log.Println("Save error", err)
 			}

@@ -26,4 +26,9 @@ var (
 		Name: "active_vehicles",
 		Help: "Number of vehicles currently active in the simulator",
 	})
+
+	anomaliesDetected = promauto.NewCounter(prometheus.CounterOpts{
+		Name: "anomalies_detected_total",
+		Help: "Telemetry events flagged as anomalous",
+	})
 )
