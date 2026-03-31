@@ -20,7 +20,8 @@ the data infrastructure that powers real-time fleet observability.
 - Sub-5ms p99 ingest latency
 - Zero-downtime schema: TimescaleDB hypertable auto-partitions by time
 
-#Observability Dashboard
+
+## Observability Dashboard
 ![Active Vehciles and p99 Latency](assets/dashboard-active-vehicles.png)
 ![Throughput and Rejection Rate](assets/dashboard-throughput.png)
 
