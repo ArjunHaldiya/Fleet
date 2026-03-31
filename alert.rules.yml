@@ -1,0 +1,10 @@
+groups:
+  - name: fleet
+    rules:
+      - alert: HighRejectionRate
+        expr: rate(events_rejected_total[1m])/rate(events_ingested_total[1m]) > 0.05
+        for : 1m
+        labels:
+          severity: warning
+        annotations:
+          summary:  "Rejection rate above 5%"
