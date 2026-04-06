@@ -1,0 +1,12 @@
+apiVersion: 1
+kind: configMap
+metadata:
+  name: fleet-config
+  namespace:  fleet
+data:
+  KAFKA_BROKER: "kafka:9092"
+  KAFKA_TOPIC:  "telemetry.events"
+  POSTGRES_HOST:  "timescaledb"
+  POSTGRES_PORT:  "5432"
+  POSTGRES_DB:  "fleetpulse"
+  REDIS_ADDR: "redis:6379"
